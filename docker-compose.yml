@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  mysqldb:
+    build:
+      context: ./mysql-service
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - ./mysql-service/data:/var/lib/mysql
+  nodejs:
+    build:
+      context: ./nodejs-service
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_HOST=mysqldb
+      - PORT=${NODEJS_PORT}
+    ports:
+      - ${NODEJS_PORT}:${NODEJS_PORT}
+    depends_on:
+      - mysqldb
