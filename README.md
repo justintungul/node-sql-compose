@@ -7,7 +7,7 @@ Sample NodeJS application with MySQL database built with docker-compose.
 - NodeJs: 666
 - MySQL: 3306
 
-### Installaion
+### Installation
 
 1. git clone repo
 2. docker-compose up
