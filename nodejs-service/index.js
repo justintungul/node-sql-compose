@@ -3,33 +3,32 @@ const mysql = require('mysql');
 
 const bodyParser = require('body-parser');
 
+// Accept JSON encoded bodies.
 app.use(bodyParser.json({
     limit: '8mb'
-})); // support json encoded bodies
+}));
 
-// environment variables
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 666;
 const HOST = process.env.HOST || '0.0.0.0';
 
-// mysql credentials
 const connection = mysql.createConnection({
-	host: process.env.MYSQL_HOST || 'mysqldb',
-	user: process.env.MYSQL_USER || 'admin',
-	password: process.env.MYSQL_PASSWORD || 'pass',
-	database: process.env.MYSQL_DATABASE || 'test'
+	host: process.env.MYSQL_HOST,
+	user: process.env.MYSQL_USER,
+	password: process.env.MYSQL_PASSWORD,
+	database: process.env.MYSQL_DATABASE
 });
 
 
 connection.connect((err) => {
 	if (err) {
-		console.error('error connecting mysql: ', err);
+		console.error('Error connecting mysql: ', err);
 	} else {
-		console.log('mysql connection successful');
+		console.log('Mysql connection successful');
 		app.listen(PORT, HOST, (err) => {
 			if (err) {
 				console.error('Error starting  server', err);
 			} else {
-				console.log('server listening at port ' + PORT);
+				console.log('Server listening at port ' + PORT);
 			}
 		});
 	}
