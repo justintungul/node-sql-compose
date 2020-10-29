@@ -1,10 +1,11 @@
 # MySQL NodeJS Docker Compose
 
-Sample NodeJS application with MySQL database built with docker-compose.
+Sample NodeJS application with MySQL interfaced with a TCP server built with docker-compose.
 
 ### Ports
 
-- NodeJs: 666
+- HTTP: 8080
+- TCP: 6603
 - MySQL: 3306
 
 ### Installation
@@ -14,7 +15,7 @@ Sample NodeJS application with MySQL database built with docker-compose.
 
 ### Testing sample endpoints
 ```
-curl -X GET localhost:666
-curl -X POST localhost:666/get-users
-curl --header "Content-Type: application/json" -d '{"first_name": "froe", "last_name": "doe", "email": "froe@email.com"}' -X POST localhost:666/add-user
+curl -X GET localhost:8080
+curl -X POST localhost:8080/get-users
+curl --header "Content-Type: application/json" -d '{"firstName": "froe", "lastName": "doe", "email": "froe@email.com"}' -X POST localhost:8080/add-user
 ```
