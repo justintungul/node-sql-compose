@@ -12,17 +12,29 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - ./mysql-service/data:/var/lib/mysql
-  nodejs:
+
+  http:
     build:
-      context: ./nodejs-service
+      context: ./http-service
+      dockerfile: Dockerfile
+    environment:
+      - HTTP_PORT=${HTTP_PORT}
+      - TCP_HOST=tcp
+      - TCP_PORT=${TCP_PORT}
+    ports:
+      - ${HTTP_PORT}:${HTTP_PORT}
+    depends_on:
+      - tcp
+
+  tcp:
+    build:
+      context: ./tcp-service
       dockerfile: Dockerfile
     environment:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_HOST=mysqldb
-      - PORT=${NODEJS_PORT}
-    ports:
-      - ${NODEJS_PORT}:${NODEJS_PORT}
+      - TCP_PORT=${TCP_PORT}
     depends_on:
       - mysqldb

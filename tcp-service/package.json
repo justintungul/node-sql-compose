@@ -1,0 +1,14 @@
+{
+  "name": "tcp-service",
+  "version": "1.0.0",
+  "description": "Tcp server using node.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "john doe<jhon@email.com>",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
