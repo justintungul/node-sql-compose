@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-microservice",
+  "name": "http-microservice",
   "version": "1.0.0",
-  "description": "Running a nodejs application with mysql database as microservices using docker",
+  "description": "HTTP server using node",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,20 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/varunon9/getting-started-docker-mysql-nodejs.git"
+    "url": "https://github.com/justintungul/node-sql-compose"
   },
-  "keywords": [
-    "docker",
-    "mysql-docker",
-    "nodejs-docker",
-    "microservice"
-  ],
   "author": "john doe<jhon@email.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/varunon9/getting-started-docker-mysql-nodejs/issues"
-  },
-  "homepage": "https://github.com/varunon9/getting-started-docker-mysql-nodejs#readme",
+  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
